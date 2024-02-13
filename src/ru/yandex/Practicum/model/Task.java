@@ -1,3 +1,5 @@
+package ru.yandex.Practicum.model;
+
 import java.util.Objects;
 
 public class Task {

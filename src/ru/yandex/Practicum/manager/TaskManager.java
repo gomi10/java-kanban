@@ -1,3 +1,7 @@
+package ru.yandex.Practicum.manager;
+
+import ru.yandex.Practicum.model.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 

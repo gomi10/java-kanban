@@ -1,3 +1,5 @@
+package ru.yandex.Practicum.model;
+
 public class Subtask extends Task {
     private int epicId;
 

@@ -1,3 +1,8 @@
+package ru.yandex.Practicum;
+
+import ru.yandex.Practicum.manager.TaskManager;
+import ru.yandex.Practicum.model.*;
+
 public class Main {
 
     public static void main(String[] args) {
