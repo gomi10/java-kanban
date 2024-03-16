@@ -1,5 +1,6 @@
 package ru.yandex.Practicum;
 
+import ru.yandex.Practicum.manager.Managers;
 import ru.yandex.Practicum.manager.TaskManager;
 import ru.yandex.Practicum.model.*;
 
@@ -8,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Поехали!");
 
-        TaskManager taskManager = new TaskManager();
+        TaskManager taskManager = Managers.getDefault();
 
         Task task1 = new Task("1", "1");
         Task task2 = new Task("2", "2");
@@ -27,22 +28,17 @@ public class Main {
         taskManager.createSubtask(subtask2);
         taskManager.createSubtask(subtask3);
 
-        System.out.println(taskManager.getListAllTasks());
-        System.out.println(taskManager.getListAllSubtasks());
-        System.out.println(taskManager.getListAllEpics());
-        System.out.println();
-
         taskManager.changeStatus(task1, Status.IN_PROGRESS);
         taskManager.changeStatus(task2, Status.DONE);
         taskManager.changeStatus(subtask1, Status.DONE);
         taskManager.changeStatus(subtask2, Status.IN_PROGRESS);
         taskManager.changeStatus(subtask3, Status.DONE);
 
-        taskManager.printAll();
-        System.out.println();
+        taskManager.getTaskById(1);
+        taskManager.getSubtaskById(4);
+        taskManager.getEpicById(3);
+        taskManager.getTaskById(2);
 
-        taskManager.removeById(task1.getId());
-        taskManager.removeById(epic1.getId());
-        taskManager.printAll();
+        System.out.println(taskManager.getHistory());
     }
 }
