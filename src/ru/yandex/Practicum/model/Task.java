@@ -3,8 +3,8 @@ package ru.yandex.Practicum.model;
 import java.util.Objects;
 
 public class Task {
-    private String name;
-    private String description;
+    private final String name;
+    private final String description;
     private int id;
     private Status status = Status.NEW;
 

@@ -2,7 +2,7 @@ package ru.yandex.Practicum.manager;
 
 import ru.yandex.Practicum.model.*;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface TaskManager {
     void createTask(Task newTask);
@@ -11,13 +11,13 @@ public interface TaskManager {
 
     void createEpic(Epic newEpic);
 
-    ArrayList<Task> getListAllTasks();
+    List<Task> getListAllTasks();
 
-    ArrayList<Subtask> getListAllSubtasks();
+    List<Subtask> getListAllSubtasks();
 
-    ArrayList<Epic> getListAllEpics();
+    List<Epic> getListAllEpics();
 
-    ArrayList<Subtask> getListAllSubtasksOneEpic(Epic epic);
+    List<Subtask> getListAllSubtasksOneEpic(Epic epic);
 
     void printAll();
 
@@ -47,5 +47,5 @@ public interface TaskManager {
 
     void checkEpicStatus(int epicId);
 
-    ArrayList<Task> getHistory();
+    List<Task> getHistory();
 }

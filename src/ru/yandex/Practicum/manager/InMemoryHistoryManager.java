@@ -3,21 +3,23 @@ package ru.yandex.Practicum.manager;
 import ru.yandex.Practicum.model.Task;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
 
-    private final ArrayList<Task> historyList = new ArrayList<>();
+    private final List<Task> historyList = new ArrayList<>();
+    private static final int MAX_LIST_SIZE = 10;
 
     @Override
     public void add(Task task) {
-        if (historyList.size() == 10) {
+        if (historyList.size() == MAX_LIST_SIZE) {
             historyList.removeFirst();
         }
         historyList.add(task);
     }
 
     @Override
-    public ArrayList<Task> getHistory() {
+    public List<Task> getHistory() {
         return historyList;
     }
 }
