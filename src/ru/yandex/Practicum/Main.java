@@ -2,7 +2,9 @@ package ru.yandex.Practicum;
 
 import ru.yandex.Practicum.manager.Managers;
 import ru.yandex.Practicum.manager.TaskManager;
-import ru.yandex.Practicum.model.*;
+import ru.yandex.Practicum.model.Epic;
+import ru.yandex.Practicum.model.Subtask;
+import ru.yandex.Practicum.model.Task;
 
 public class Main {
 
@@ -19,26 +21,26 @@ public class Main {
         Epic epic1 = new Epic("3", "3");
         taskManager.createEpic(epic1);
         Subtask subtask1 = new Subtask("4", "4", epic1.getId());
+        Subtask subtask2 = new Subtask("5", "5", epic1.getId());
+        Subtask subtask3 = new Subtask("6", "6", epic1.getId());
         taskManager.createSubtask(subtask1);
-
-        Epic epic2 = new Epic("5", "5");
-        taskManager.createEpic(epic2);
-        Subtask subtask2 = new Subtask("6", "6", epic2.getId());
-        Subtask subtask3 = new Subtask("7", "7", epic2.getId());
         taskManager.createSubtask(subtask2);
         taskManager.createSubtask(subtask3);
 
-        taskManager.changeStatus(task1, Status.IN_PROGRESS);
-        taskManager.changeStatus(task2, Status.DONE);
-        taskManager.changeStatus(subtask1, Status.DONE);
-        taskManager.changeStatus(subtask2, Status.IN_PROGRESS);
-        taskManager.changeStatus(subtask3, Status.DONE);
+        Epic epic2 = new Epic("7", "7");
+        taskManager.createEpic(epic2);
 
-        taskManager.getTaskById(1);
-        taskManager.getSubtaskById(4);
-        taskManager.getEpicById(3);
-        taskManager.getTaskById(2);
+        taskManager.getTaskById(task1.getId());
+        taskManager.getSubtaskById(subtask1.getId());
+        taskManager.getTaskById(task2.getId());
+        taskManager.getEpicById(epic2.getId());
+        taskManager.getTaskById(task2.getId());
+        taskManager.getSubtaskById(subtask2.getId());
+        taskManager.getTaskById(task1.getId());
+        System.out.println(taskManager.getHistory());
 
+        taskManager.removeById(epic2.getId());
+        taskManager.removeById(task2.getId());
         System.out.println(taskManager.getHistory());
     }
 }
