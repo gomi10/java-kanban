@@ -13,7 +13,7 @@ class InMemoryHistoryManagerTest {
     Task task1;
     Task task2;
     Task task3;
-    MyLinkedList<Task> myLinkedList;
+    MyLinkedList myLinkedList;
     HistoryManager historyManager;
 
     @BeforeEach
@@ -21,7 +21,7 @@ class InMemoryHistoryManagerTest {
         task1 = new Task("1", "1", 1);
         task2 = new Task("2", "2", 2);
         task3 = new Task("3", "3", 3);
-        myLinkedList = new MyLinkedList<>();
+        myLinkedList = new MyLinkedList();
         historyManager = Managers.getDefaultHistory();
     }
 
@@ -40,8 +40,8 @@ class InMemoryHistoryManagerTest {
         myLinkedList.linkLast(task3);
         Node<Task> testTask1 = myLinkedList.getHashMap().get(task1.getId());
         Node<Task> testTask2 = myLinkedList.getHashMap().get(task3.getId());
-        assertEquals(task2, testTask1.next.e);
-        assertEquals(task2, testTask2.prev.e);
+        assertEquals(task2, testTask1.getNext().getE());
+        assertEquals(task2, testTask2.getPrev().getE());
     }
 
     @Test
@@ -59,8 +59,8 @@ class InMemoryHistoryManagerTest {
         myLinkedList.linkLast(task2);
         myLinkedList.linkLast(task3);
         myLinkedList.unlink(2);
-        assertEquals(task1, myLinkedList.getNode(3).prev.e);
-        assertEquals(task3, myLinkedList.getNode(1).next.e);
+        assertEquals(task1, myLinkedList.getNode(3).getPrev().getE());
+        assertEquals(task3, myLinkedList.getNode(1).getNext().getE());
     }
 
     @Test

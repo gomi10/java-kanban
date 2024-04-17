@@ -7,7 +7,7 @@ import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
 
-    MyLinkedList<Task> myLinkedList = new MyLinkedList<>();
+    MyLinkedList myLinkedList = new MyLinkedList();
 
     @Override
     public void add(Task task) {

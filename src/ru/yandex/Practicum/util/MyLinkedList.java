@@ -7,46 +7,46 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MyLinkedList<E extends Task> {
-    Node<E> first;
-    Node<E> last;
-    private final Map<Integer, Node<E>> history = new HashMap<>();
+public class MyLinkedList {
+    private Node<Task> first;
+    private Node<Task> last;
+    private final Map<Integer, Node<Task>> history = new HashMap<>();
 
-    public void linkLast(E e) {
-        if (history.containsKey(e.getId())) {
-            removeNode(e.getId());
+    public void linkLast(Task task) {
+        if (history.containsKey(task.getId())) {
+            removeNode(task.getId());
         }
 
-        final Node<E> l = last;
-        final Node<E> newNode = new Node<>(l, e, null);
+        final Node<Task> l = last;
+        final Node<Task> newNode = new Node<>(l, task, null);
         last = newNode;
         if (l == null)
             first = newNode;
         else
-            l.next = newNode;
+            l.setNext(newNode);
 
-        history.put(e.getId(), newNode);
+        history.put(task.getId(), newNode);
     }
 
     public void unlink(int id) {
-        Node<E> x = history.get(id);
-        final Node<E> next = x.next;
-        final Node<E> prev = x.prev;
+        Node<Task> x = history.get(id);
+        final Node<Task> next = x.getNext();
+        final Node<Task> prev = x.getPrev();
 
         if (prev == null) {
             first = next;
         } else {
-            prev.next = next;
-            x.prev = null;
+            prev.setNext(next);
+            x.setPrev(null);
         }
 
         if (next == null) {
             last = prev;
         } else {
-            next.prev = prev;
-            x.next = null;
+            next.setPrev(prev);
+            x.setNext(null);
         }
-        x.e = null;
+        x.setE(null);
         history.remove(id);
     }
 
@@ -54,21 +54,37 @@ public class MyLinkedList<E extends Task> {
         unlink(id);
     }
 
-    public List<E> getTasks() {
-        List<E> historyList = new ArrayList<>();
-        Node<E> item = first;
+    public List<Task> getTasks() {
+        List<Task> historyList = new ArrayList<>();
+        Node<Task> item = first;
         while (item != null) {
-            historyList.add(item.e);
-            item = item.next;
+            historyList.add(item.getE());
+            item = item.getNext();
         }
         return historyList;
     }
 
-    public Map<Integer, Node<E>> getHashMap() {
+    public Map<Integer, Node<Task>> getHashMap() {
         return history;
     }
 
-    public Node<E> getNode(int id) {
+    public Node<Task> getNode(int id) {
         return history.get(id);
+    }
+
+    public Node<Task> getFirst() {
+        return first;
+    }
+
+    public void setFirst(Node<Task> first) {
+        this.first = first;
+    }
+
+    public Node<Task> getLast() {
+        return last;
+    }
+
+    public void setLast(Node<Task> last) {
+        this.last = last;
     }
 }

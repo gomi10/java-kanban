@@ -3,13 +3,37 @@ package ru.yandex.Practicum.util;
 import java.util.Objects;
 
 public class Node<E> {
-    public Node<E> prev;
-    public E e;
-    public Node<E> next;
+    private Node<E> prev;
+    private E e;
+    private Node<E> next;
 
     public Node(Node<E> prev, E e, Node<E> next) {
         this.prev = prev;
         this.e = e;
+        this.next = next;
+    }
+
+    public Node<E> getPrev() {
+        return prev;
+    }
+
+    public void setPrev(Node<E> prev) {
+        this.prev = prev;
+    }
+
+    public E getE() {
+        return e;
+    }
+
+    public void setE(E e) {
+        this.e = e;
+    }
+
+    public Node<E> getNext() {
+        return next;
+    }
+
+    public void setNext(Node<E> next) {
         this.next = next;
     }
 
