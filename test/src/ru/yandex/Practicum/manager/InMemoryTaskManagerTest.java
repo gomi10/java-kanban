@@ -70,4 +70,11 @@ class InMemoryTaskManagerTest {
     void shouldBePositiveIfTaskIsSameAfterAddInTaskManager() {
         assertEquals(task1, taskManager.getTaskById(1));
     }
+
+    @Test
+    void shouldRemoveSubtasksIdInEpic() {
+        assertEquals(1, epic.getSubtaskIds().size());
+        taskManager.removeById(subtask1.getId());
+        assertEquals(0, epic.getSubtaskIds().size());
+    }
 }
